@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>NEW BLOG</h1>
+    <form action="/new/blog" method="post">
+        <div>
+            <label for="title">Title: </label>
+            <div><small>required</small></div>
+            <input type="text" id="title" required>
+        </div>
+        <div>
+            <label for="author-name">Author name: </label>
+            <div><small>required</small></div>
+            <input type="text" id="author-name">            
+        </div>
+        <div>
+            <label for="blog">Write here: </label>
+            <div><small>required</small></div>
+            <textarea name="" id="blog" required maxlength="250"></textarea>
+        </div>
+        <button type="submit">Publish</button>
+    </form>
+</body>
+</html>
