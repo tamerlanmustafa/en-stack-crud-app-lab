@@ -31,17 +31,28 @@ mongoose.connection.on("error", (err) => {
 
 
 
-
 app.get('/', (req, res) => {
-    res.send(`salam`)
+    res.render('home')
 })
 
-app.get('/new', (req, res) => {
+app.get('/blogs', (req, res) => {
+    res.render('blogs')
+})
+
+app.get('/blogs/new', async (req, res) => {
     res.render('new')
+    try {
+        const createBlog = Blog.create(req.body)
+        res.redirect('/blogs')
+    } catch (err) {
+        res.status(400).json({error: err.message})
+        console.log(err)
+    }
 })
 
-app.post('/new/blog', (req, res) => {
-    res.send('Your Blog has been successfully published')
+app.post('/new/blog', async (req, res) => {
+    res.render('publishPage')
+   
 })
  
 
