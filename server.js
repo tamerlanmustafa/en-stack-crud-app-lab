@@ -1,8 +1,8 @@
-const mongoose = require('mongoose')
 const express = require('express')
-const dotenv = require('dotenv')
 const morgan = require('morgan')
 const methodOverride = require('method-override')
+const mongoose = require('mongoose')
+const dotenv = require('dotenv')
 
 
 
@@ -25,7 +25,7 @@ app.use(methodOverride('_method'))
 const PORT = process.env.PORT || 3000
 
 
-mongoose.connect(process.env.MONGODB_URI)
+mongoose.connect(process.env.MONGODB_URI) 
 
 mongoose.connection.on('connected', () => {
     console.log(`Connected to MongoDB ${mongoose.connection.name} `)
@@ -38,32 +38,15 @@ mongoose.connection.on("error", (err) => {
     console.log(err)
 });
 
+const blogsController = require('./contollers/blogs')
 
-
-app.get('/', (req, res) => {
-    res.render('home')
-})
-
-app.get('/blogs', (req, res) => {
-    res.render('blogs')
-})
-
-app.get('/blogs/new', async (req, res) => {
-    res.render('new')
-    
-})
-
-app.post('/new/blog', async (req, res) => {
-    res.render('publishPage')
-    try {
-        const createBlog = Blog.create(req.body)
-        res.redirect('/blogs')
-    } catch (err) {
-        res.status(400).json({error: err.message})
-        console.log(err)
-    }
-    
-})
+app.get('/blogs/new', blogsController.new)
+app.get('/blogs/', blogsController.index)
+app.get('/blogs/:id', blogsController.show)
+app.get('/blogs/:id/edit', blogsController.edit)
+app.post('/blogs',blogsController.create)
+app.delete('/blogs/new', blogsController.delete)
+app.put('/blogs/:id', blogsController.update)
  
 
 app.listen(3000, console.log(`Server is running on port ${PORT}`))

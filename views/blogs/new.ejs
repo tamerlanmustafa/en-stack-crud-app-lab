@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>New Blog Page</h1>
+    <form action="/blogs" method="post">
+        <div>
+            <label for="publishDate">Publish Date</label>
+            <input type="date" name="dateOfPublish" id="publishDate" type="datetime-local" required>
+        </div>
+
+        <div>
+            <label for="numberOfWords">numberOfWords</label>
+            <input type="number" name="numberOfWords" id="numberOfWords" required>
+        </div>
+
+        <div>
+            <label for="category">Category</label>
+            <!-- <input type="text" name="category" id="category"> -->
+            <select name="category" id="category" required> 
+                <option value="" selected>Other</option>
+                <option value="tech">Tech</option>
+                <option value="music">Music</option>
+                <option value="nature">Nature</option>
+            </select>
+                
+        </div>
+
+        <div>
+            <label for="author">Author</label>
+            <input type="text" name="author" id="author" required>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
