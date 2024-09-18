@@ -1,15 +1,24 @@
 const mongoose = require('mongoose')
 const express = require('express')
 const dotenv = require('dotenv')
+const morgan = require('morgan')
+const methodOverride = require('method-override')
+
+
+
 const app = express()
+dotenv.config() 
 
 const Blog = require('./models/Blogs')
 
 
-// APP CONFIG
+// Middleware
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: false }));
-dotenv.config() 
+app.use(express.static('public'))
+app.use(morgan('dev'))
+app.use(express.json())
+app.use(methodOverride('_method'))
 
 
 
@@ -41,6 +50,11 @@ app.get('/blogs', (req, res) => {
 
 app.get('/blogs/new', async (req, res) => {
     res.render('new')
+    
+})
+
+app.post('/new/blog', async (req, res) => {
+    res.render('publishPage')
     try {
         const createBlog = Blog.create(req.body)
         res.redirect('/blogs')
@@ -48,11 +62,7 @@ app.get('/blogs/new', async (req, res) => {
         res.status(400).json({error: err.message})
         console.log(err)
     }
-})
-
-app.post('/new/blog', async (req, res) => {
-    res.render('publishPage')
-   
+    
 })
  
 
