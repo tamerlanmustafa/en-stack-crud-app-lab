@@ -9,27 +9,28 @@
     <h1>New Blog Page</h1>
     <form action="/blogs" method="post">
         <div>
-            <label for="publishDate">Publish Date</label>
-            <input type="date" name="dateOfPublish" id="publishDate" type="datetime-local" required>
+            <label for="date">Publish Date</label>
+            <input type="date" name="date" id="date" type="datetime-local" required>
         </div>
-
-        <div>
+  
+        <div>   
             <label for="numberOfWords">numberOfWords</label>
             <input type="number" name="numberOfWords" id="numberOfWords" required>
         </div>
 
         <div>
             <label for="category">Category</label>
-            <!-- <input type="text" name="category" id="category"> -->
             <select name="category" id="category" required> 
                 <option value="" selected>Other</option>
                 <option value="tech">Tech</option>
                 <option value="music">Music</option>
                 <option value="nature">Nature</option>
             </select>
-                
         </div>
-
+        <div>
+            <label for="title">Title</label>
+            <input type="text" name="title" id="title" required>
+        </div>
         <div>
             <label for="author">Author</label>
             <input type="text" name="author" id="author" required>

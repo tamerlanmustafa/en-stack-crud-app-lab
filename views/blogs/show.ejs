@@ -7,5 +7,21 @@
 </head>
 <body>
     <h1>Details</h1>
+    <% if (!blog.isPrivate) { %>
+        <h2>Details of the blog</h2>
+        <% } else { %>
+        <p>This blog is private</p>
+    <% } %>
+
+    <%= blog.title %>
+    <%= blog.author %>
+    <%= blog.numberOfWords %>
+
+
+   
+
+    <form method="POST" action="/blogs/<%=blog._id%>?_method=DELETE">
+        <button type="submit">Delete Fruit</button>
+    </form>
 </body>
 </html>

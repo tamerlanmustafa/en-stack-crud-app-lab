@@ -7,5 +7,19 @@
 </head>
 <body>
     <h1>Ride list page</h1>
+    <% blogs.forEach(blog => { %>
+        <ul>
+            <li>
+                <strong>Author: </strong> <%= blog.author %>
+                <br>
+                <strong>Title: </strong> <%= blog.title %>
+                <br>
+                <strong>Number of Words: </strong> <%= blog.numberOfWords %>
+                <br>
+                <strong>Category: </strong> <%= blog.category %>
+                <a href="show/<%=blog._id%>">Details</a>
+            </li>
+        </ul>
+    <%})%>
 </body>
 </html>

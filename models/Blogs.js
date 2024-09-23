@@ -6,10 +6,15 @@ const blogSchema = mongoose.Schema({
     author: String,
     numberOfWords: Number,
     date: Date,
+    category: String,
     isPrivate: { type: Boolean, default: false }
 })
 
-const Blog = mongoose.model('Blog', blogSchema)
+
+
+
+
+const Blog = mongoose.model('Blog', blogSchema) 
 
 module.exports = Blog
 
